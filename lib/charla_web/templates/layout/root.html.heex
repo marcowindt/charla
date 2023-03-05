@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <%= csrf_meta_tag() %>
+    <%= live_title_tag assigns[:page_title] || "Charla", suffix: " · Phoenix Framework" %>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-col h-screen justify-between">
+      <header class="bg-lime-400 w-full py-2 top-0 fixed">
+        <section class="flex justify-between">
+          <div class="flex items-center gap-1 ml-2 w-4/12">
+            <%= if @current_user do %>
+              <img src={@current_user.avatar} width="32" height="32" class="rounded-full" />
+              <p>Welcome, <%= @current_user.name %>!</p>
+            <% end %>
+          </div>
+
+          <h1 class="text-xl font-sans text-center w-4/12">Charla</h1>
+
+          <div class="flex w-4/12 justify-end">
+            <%= if @current_user do %>
+              <%= link "Logout", to: "/auth/logout", method: "delete", class: "bg-lime-100 rounded px-4 py-1 mr-2" %>
+            <% end %>
+          </div>
+        </section>
+      </header>
+      <%= @inner_content %>
+    </div>
+  </body>
+</html>

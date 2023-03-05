@@ -1,0 +1,21 @@
+<div class="flex flex-col h-screen bg-lime-400 justify-center text-center items-center">
+  <%= if @current_user do %>
+    <img src={@current_user.avatar} width="128" height="128" class="rounded-full my-5" />
+    <h2>Welcome, <%= @current_user.name %> to Charla!</h2>
+    <a href="/chat" class="bg-lime-600 text-white rounded-xl px-4 py-2 mt-2">Click here to join the chat!</a>
+    <br />
+    <%= link "Logout", to: "/auth/logout", method: "delete", class: "button bg-lime-100 rounded-xl px-4 py-2" %>
+    <br />
+  <% else %>
+    <h1 class="text-3xl">Welcome to Charla!</h1>
+    <p>Please sign in to join the majestic chat.</p>
+    <br />
+    <ul style="list-style: none">
+      <li>
+        <a class="button bg-black px-3 py-2 rounded text-white" href="/auth/github">
+          Sign in with GitHub
+        </a>
+      </li>
+    </ul>
+  <% end %>
+</div>

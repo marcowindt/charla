@@ -1,0 +1,40 @@
+{
+	"name": "Elixir, Phoenix, Node.js & PostgresSQL (Community)",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "elixir",
+	"workspaceFolder": "/workspace",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg",
+				"jakebecker.elixir-ls"
+			]
+		},
+
+		"settings": {
+			"sqltools.connections": [{
+				"name": "Postgres DB",
+				"driver": "PostgreSQL",
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 5432,
+				"database": "charla_dev",
+				"username": "postgres",
+				"password": "postgres"
+			}]
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or with the host. 
+	"forwardPorts": [4000, 4001, 5432]
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "mix deps.get"
+}
